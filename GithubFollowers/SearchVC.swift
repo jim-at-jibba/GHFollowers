@@ -20,6 +20,7 @@ class SearchVC: UIViewController {
         configureLogoImageView()
         configureTextField()
         configureCTAButton()
+        createDismissKeyboardTapGesture()
     }
    
     // This is called everytime the view is in view
@@ -27,6 +28,11 @@ class SearchVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+    }
+    
+    func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
 
     func configureLogoImageView() {
