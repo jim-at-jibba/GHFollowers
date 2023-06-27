@@ -1,4 +1,4 @@
-//
+ //
 //  SearchVC.swift
 //  GithubFollowers
 //
@@ -7,11 +7,15 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+class SearchVC: UIViewController, UITextFieldDelegate {
     
     let logoImageView = UIImageView()
     let usernameTextField = GFTextField()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get followers")
+    // computed Property
+    var isUsernameEntered: Bool {
+        return !usernameTextField.text!.isEmpty
+    }
     
     
     override func viewDidLoad() {
@@ -34,6 +38,18 @@ class SearchVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
     }
+    
+    @objc func pushFollowerListVC() {
+        guard isUsernameEntered else {
+            print("No username")
+            return
+        }
+        
+        let followerListVC = FollowerListVC()
+        followerListVC.username = usernameTextField.text
+        followerListVC.title = usernameTextField.text
+        navigationController?.pushViewController(followerListVC, animated: true)
+    }
 
     func configureLogoImageView() {
         view.addSubview(logoImageView)
@@ -50,6 +66,7 @@ class SearchVC: UIViewController {
     
     func configureTextField() {
         view.addSubview(usernameTextField)
+        usernameTextField.delegate = self
         
         NSLayoutConstraint.activate([
             usernameTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
@@ -61,6 +78,8 @@ class SearchVC: UIViewController {
     
     func configureCTAButton() {
         view.addSubview(callToActionButton)
+        // Add action to button
+        callToActionButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             callToActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
@@ -68,5 +87,17 @@ class SearchVC: UIViewController {
             callToActionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+}
+
+// Delegates are listeners
+// We are making SearchVC conform the the UITextViewDelegate so we can perform an action when
+// pressing the action (Go) button
+//
+// You MUST set the delegate - see configureTextField
+extension SearchVC: UITextViewDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        pushFollowerListVC()
+        return true
     }
 }
