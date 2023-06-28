@@ -31,7 +31,8 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     // viewDidLoad only gets called once
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+        // navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func createDismissKeyboardTapGesture() {
