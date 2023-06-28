@@ -21,6 +21,7 @@
 		9A7CB2E02A4C0918005CCF92 /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CB2DF2A4C0918005CCF92 /* GFTitleLabel.swift */; };
 		9A7CB2E22A4C0A5C005CCF92 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CB2E12A4C0A5C005CCF92 /* GFBodyLabel.swift */; };
 		9A7CB2E42A4C0B28005CCF92 /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CB2E32A4C0B28005CCF92 /* GFAlertVC.swift */; };
+		9A7CB2E62A4C134F005CCF92 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7CB2E52A4C134F005CCF92 /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		9A7CB2DF2A4C0918005CCF92 /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
 		9A7CB2E12A4C0A5C005CCF92 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		9A7CB2E32A4C0B28005CCF92 /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
+		9A7CB2E52A4C134F005CCF92 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				9A7CB2DF2A4C0918005CCF92 /* GFTitleLabel.swift */,
 				9A7CB2E12A4C0A5C005CCF92 /* GFBodyLabel.swift */,
 				9A7CB2E32A4C0B28005CCF92 /* GFAlertVC.swift */,
+				9A7CB2E52A4C134F005CCF92 /* UIViewController+Ext.swift */,
 			);
 			path = GithubFollowers;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A7CB2DE2A4B74A7005CCF92 /* String+Ext.swift in Sources */,
+				9A7CB2E62A4C134F005CCF92 /* UIViewController+Ext.swift in Sources */,
 				9A79D6242A49CFEE005E4251 /* SearchVC.swift in Sources */,
 				9A79D6142A49CA84005E4251 /* ViewController.swift in Sources */,
 				9A79D6282A49D5FD005E4251 /* GFButton.swift in Sources */,
