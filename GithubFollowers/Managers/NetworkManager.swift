@@ -15,11 +15,12 @@ class NetworkManager {
     private init() {}
     
     // @escaping is our callback/completionHandler
-    func getFollowers(for username: String, page: Int, completed: @escaping ([Follower]?, String?) -> Void) {
+    // ErrorMessage is our enum
+    func getFollowers(for username: String, page: Int, completed: @escaping ([Follower]?, ErrorMessage?) -> Void) {
         let endpoint = baseUrl + "\(username)/followers?per_page=100&page=\(page)"
         
         guard let url = URL(string: endpoint) else {
-            completed(nil, "This username created an invalid request. Please try again")
+            completed(nil, .invalidUsername)
             return
         }
         
@@ -27,16 +28,16 @@ class NetworkManager {
             if let _ = error {
                 // This error is usually because you dont have internet
                 // http errors come back in the response
-                completed(nil, "Unable to complete your request. Please check your internet connection")
+                completed(nil, .networkError)
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-               completed(nil, "Invalid response from the server. Please try again.")
+                completed(nil, .invalidResponse)
                 return
             }
             
             guard let data = data else {
-                completed(nil, "The data received from the server is invalid. Please try again later.")
+                completed(nil, .invalidData)
                 return
             }
             
@@ -46,7 +47,7 @@ class NetworkManager {
                 let followers = try decoder.decode([Follower].self, from: data)
                 completed(followers, nil)
             } catch {
-                completed(nil, "The data received from the server is invalid. Please try again later.")
+                completed(nil, .invalidData)
             }
         }
         
