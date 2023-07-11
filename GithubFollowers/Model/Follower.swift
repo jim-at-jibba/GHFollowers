@@ -29,7 +29,7 @@
 import Foundation
 
 // Codable is the both Encodable and Deocodable
-struct Follower: Codable {
+struct Follower: Codable, Hashable {
     // variable names must match the properties of the response
     // if the response properties could be null then you must make it an optional
     var login: String
