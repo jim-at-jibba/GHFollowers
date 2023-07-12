@@ -61,7 +61,14 @@ class FollowerListVC: UIViewController {
     }
     
     func getFollowers() {
-        NetworkManager.shared.getFollowers(for: username, page: 1) { result in
+        // making this [weak self] removes the strong reference between self and the network manager that may cause
+        // a memory leak
+        // [weak self] <- is called a capture list
+        // ARC (Automatic reference counting) counts strong references between objects
+        // https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html
+        NetworkManager.shared.getFollowers(for: username, page: 1) { [weak self] result in
+            // Adding this guard means we dont have to unwrap the self var with a ?
+            guard let self = self else {return}
             
             switch result {
             case .success(let followers):
