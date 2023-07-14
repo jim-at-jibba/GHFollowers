@@ -5,11 +5,14 @@
 //  Created by James Best on 30/06/2023.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     static let shared = NetworkManager()
-    let baseUrl = "https://api.github.com/users/"
+    private let baseUrl = "https://api.github.com/users/"
+    
+    // Network manager is a singleton. Good place to create a cache
+    let cache = NSCache<NSString, UIImage>()
    
     // The creates the singleton
     private init() {}
