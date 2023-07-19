@@ -16,6 +16,8 @@ class FollowerListVC: UIViewController {
     
     var username: String!
     var followers: [Follower] = []
+    var page = 1
+    var hasMoreFollowers = true
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
 
@@ -23,7 +25,7 @@ class FollowerListVC: UIViewController {
         super.viewDidLoad()
         configureViewController()
         configureCollectionView()
-        getFollowers()
+        getFollowers(username: username, page: page)
         configureDataSource()
     }
     
@@ -41,26 +43,31 @@ class FollowerListVC: UIViewController {
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
         view.addSubview(collectionView)
+        collectionView.delegate = self // this uses the extension below
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     
     
     
-    func getFollowers() {
+    func getFollowers(username: String, page: Int) {
         // making this [weak self] removes the strong reference between self and the network manager that may cause
         // a memory leak
         // [weak self] <- is called a capture list
         // ARC (Automatic reference counting) counts strong references between objects
         // https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html
-        NetworkManager.shared.getFollowers(for: username, page: 1) { [weak self] result in
+        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             // Adding this guard means we dont have to unwrap the self var with a ?
             guard let self = self else {return}
             
             switch result {
             case .success(let followers):
+                if followers.count < 20 {
+                    self.hasMoreFollowers = false
+                }
                 print("Followers.count =  \(followers.count)")
-                self.followers = followers
+                // concats the arrays
+                self.followers.append(contentsOf: followers)
                 self.updateData()
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad things happened", message: error.rawValue, buttonTitle: "OK")
@@ -84,6 +91,22 @@ class FollowerListVC: UIViewController {
         snapshot.appendItems(followers)
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
+    }
+}
+
+// When conforming to new delegate put in extension
+// Delegate is a watcher. Its waiting for an action then it will act.
+extension FollowerListVC: UICollectionViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            guard hasMoreFollowers else { return }
+            page += 1
+            getFollowers(username: username, page: page)
         }
     }
 }
