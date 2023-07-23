@@ -51,6 +51,7 @@ class FollowerListVC: UIViewController {
     
     
     func getFollowers(username: String, page: Int) {
+        showLoadingView()
         // making this [weak self] removes the strong reference between self and the network manager that may cause
         // a memory leak
         // [weak self] <- is called a capture list
@@ -59,7 +60,9 @@ class FollowerListVC: UIViewController {
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             // Adding this guard means we dont have to unwrap the self var with a ?
             guard let self = self else {return}
-            
+            // use this instead of todo comments
+            //#warning("Call dismiss")
+            self.dismissLoadingView()
             switch result {
             case .success(let followers):
                 if followers.count < 20 {
