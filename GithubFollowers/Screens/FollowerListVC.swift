@@ -8,7 +8,7 @@
 import UIKit
 
 class FollowerListVC: UIViewController {
-   
+    
     // Enum are automatically hashable
     enum Section {
         case main
@@ -20,7 +20,7 @@ class FollowerListVC: UIViewController {
     var hasMoreFollowers = true
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
@@ -71,6 +71,14 @@ class FollowerListVC: UIViewController {
                 print("Followers.count =  \(followers.count)")
                 // concats the arrays
                 self.followers.append(contentsOf: followers)
+                
+                if self.followers.isEmpty {
+                    let message = "This user does not have any followers. Go follow them 😊."
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                        return
+                    }
+                }
                 self.updateData()
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad things happened", message: error.rawValue, buttonTitle: "OK")
