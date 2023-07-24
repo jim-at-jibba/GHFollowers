@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A1787F92A6D64BD009866C3 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1787F82A6D64BD009866C3 /* GFEmptyStateView.swift */; };
+		9A1F740C2A6F0313003DCA6E /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F740B2A6F0313003DCA6E /* UserInfoVC.swift */; };
 		9A5BCDA62A5C56F10097370D /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BCDA52A5C56F10097370D /* FollowerCell.swift */; };
 		9A5BCDA82A5C57C10097370D /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BCDA72A5C57C10097370D /* GFAvatarImageView.swift */; };
 		9A5BCDAA2A5F2FB00097370D /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5BCDA92A5F2FB00097370D /* UIHelper.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		9A1787F82A6D64BD009866C3 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
+		9A1F740B2A6F0313003DCA6E /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		9A5BCDA52A5C56F10097370D /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		9A5BCDA72A5C57C10097370D /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
 		9A5BCDA92A5F2FB00097370D /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				9A79D6232A49CFEE005E4251 /* SearchVC.swift */,
 				9A79D6252A49D017005E4251 /* FavouritesListVC.swift */,
 				9A7CB2DB2A4B70AB005CCF92 /* FollowerListVC.swift */,
+				9A1F740B2A6F0313003DCA6E /* UserInfoVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				9A5BCDA62A5C56F10097370D /* FollowerCell.swift in Sources */,
 				9A5BCDA82A5C57C10097370D /* GFAvatarImageView.swift in Sources */,
 				9A79D6262A49D017005E4251 /* FavouritesListVC.swift in Sources */,
+				9A1F740C2A6F0313003DCA6E /* UserInfoVC.swift in Sources */,
 				9A7CB2ED2A4C67AE005CCF92 /* Follower.swift in Sources */,
 				9A7CB2E22A4C0A5C005CCF92 /* GFBodyLabel.swift in Sources */,
 				9A79D6122A49CA84005E4251 /* SceneDelegate.swift in Sources */,
