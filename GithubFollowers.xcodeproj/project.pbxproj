@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A0312312A7413AE004EFF93 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0312302A7413AE004EFF93 /* PersistenceManager.swift */; };
+		9A0312332A74CA05004EFF93 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0312322A74CA05004EFF93 /* FavoriteCell.swift */; };
 		9A0543722A7022D5001B0358 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0543712A7022D5001B0358 /* Constants.swift */; };
 		9A1787F92A6D64BD009866C3 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1787F82A6D64BD009866C3 /* GFEmptyStateView.swift */; };
 		9A1F740C2A6F0313003DCA6E /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F740B2A6F0313003DCA6E /* UserInfoVC.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		9A0312302A7413AE004EFF93 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		9A0312322A74CA05004EFF93 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		9A0543712A7022D5001B0358 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9A1787F82A6D64BD009866C3 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 		9A1F740B2A6F0313003DCA6E /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				9A5BCDA52A5C56F10097370D /* FollowerCell.swift */,
+				9A0312322A74CA05004EFF93 /* FavoriteCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				9A5BCDA82A5C57C10097370D /* GFAvatarImageView.swift in Sources */,
 				9A33CA762A73D161004C9A75 /* GFRepoItemVC.swift in Sources */,
 				9A79D6262A49D017005E4251 /* FavouritesListVC.swift in Sources */,
+				9A0312332A74CA05004EFF93 /* FavoriteCell.swift in Sources */,
 				9A1F740C2A6F0313003DCA6E /* UserInfoVC.swift in Sources */,
 				9A7CB2ED2A4C67AE005CCF92 /* Follower.swift in Sources */,
 				9A7CB2E22A4C0A5C005CCF92 /* GFBodyLabel.swift in Sources */,
