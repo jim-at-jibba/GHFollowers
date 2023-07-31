@@ -13,7 +13,7 @@ enum PersistanceActionType {
 
 // Using enum rather than a struct as you can create an
 // empty struct
-enum PersistenceManager {
+enum PersistanceManager {
     
     static private let defaults = UserDefaults.standard
     
@@ -22,7 +22,7 @@ enum PersistenceManager {
     }
     
     static func updateWith(favorite: Follower, actionType: PersistanceActionType, completed: @escaping(GFError?) -> Void) {
-        retrieveFavourites { result in
+        retrieveFavorites { result in
             switch result {
             case .success(let favorites):
                 var retrieveFavorites = favorites
@@ -50,7 +50,7 @@ enum PersistenceManager {
     // We are using a Result type here because we are storing a custom data type Follower
     // which needs to be decoded/coded and this process may fail
     // Standard data types dont need this
-    static func retrieveFavourites(completed: @escaping(Result<[Follower], GFError>) -> Void) {
+    static func retrieveFavorites(completed: @escaping(Result<[Follower], GFError>) -> Void) {
         // casting to Data to help swift
         guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
             // Returning empty array as this is the first time accessing our store
